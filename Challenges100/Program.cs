@@ -56,8 +56,26 @@ namespace Challenges100
             Console.WriteLine(MonthName(6));
             //for discussing 
             Console.WriteLine(MonthNameV2(0)); 
+            
+            //---------Challenge 106----------------------------------------------
+            Console.WriteLine("\n**************Challenge 106****************");
+            Console.WriteLine("The function takes a string and replaces each letter \nwith its appropriate position in the alphabet. `a´ is 1, `b´ is 2, `c´ is 3, etc.\n");
+            foreach (int num in AlphabetIndex("Wow, does that work?"))
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine();
+            foreach (int num in AlphabetIndex("The river stole the gods."))
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine();
+            foreach (int num in AlphabetIndex("We have a lot of rain in June."))
+            {
+                Console.Write(num + " ");
+            }
 
-
+            Console.WriteLine("\n**************The END****************");
             
         }
         
@@ -226,6 +244,30 @@ namespace Challenges100
 
             return monthes[input - 1];
         }
-   
+        
+        /// <summary>
+        /// The method takes a string and replaces each letter with its appropriate position in the alphabet. "a" is 1, "b" is 2, "c" is 3, etc, etc.
+        /// Examples:
+        /// AlphabetIndex("Wow, does that work?") ➞ "23 15 23 4 15 5 19 20 8 1 20 23 15 18 11"
+        /// AlphabetIndex("The river stole the gods.") ➞ "20 8 5 18 9 22 5 18 19 20 15 12 5 20 8 5 7 15 4 19"
+        /// AlphabetIndex("We have a lot of rain in June.") ➞ "23 5 8 1 22 5 1 12 15 20 15 6 18 1 9 14 9 14 10 21 14 5"
+        /// </summary>
+        /// <param name="text">A text that be replased its appropriate position.</param>
+        /// <returns>List of integers</returns>
+        public static List<int> AlphabetIndex(string text)
+        {
+
+            var convertedToLower = new String(text.Where(Char.IsLetter).ToArray());
+            // ASCII table
+            convertedToLower = convertedToLower.ToUpper();
+            var result = new List<int>();
+
+            foreach (char c in convertedToLower)
+            {
+                result.Add((int)c - 64);
+            }
+
+            return result;
+        }
     }
 }
