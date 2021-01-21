@@ -37,8 +37,16 @@ namespace Challenges100
             Console.WriteLine(SameCase("HELLO"));
             Console.WriteLine(SameCase("Hello"));
             Console.WriteLine(SameCase("ketcHUp"));
+            
+            //---------Challenge 104----------------------------------------------
+            Console.WriteLine("\n**************Challenge 104****************");
+            Console.WriteLine("The function takes a string and returns either true or false depending on whether or not it's an isogram\n");
+            Console.WriteLine(IsIsogram("Algorism"));
+            Console.WriteLine(IsIsogram("PasSword"));
+            Console.WriteLine(IsIsogram("Consecutive"));
 
 
+            
         }
         
         
@@ -132,6 +140,31 @@ namespace Challenges100
             return false;
         }
         
-        
+        /// <summary>
+        /// Challenge 104
+        /// The method is passing a string word and checking if that word is isogram or not.
+        /// Examples challenge-104:
+        /// IsIsogram("Algorism") ➞ true
+        /// IsIsogram("PasSword") ➞ false
+        /// Not case sensitive:
+        /// IsIsogram("Consecutive") ➞ false
+        /// </summary>
+        /// <param name="input">A word to for isogram</param>
+        /// <returns>True or false</returns>
+        public static bool IsIsogram(string input)
+        {
+            var convertedToLower = input.ToLower();
+            //Linq
+            int countOfUniqueCharInInput = convertedToLower.Distinct().Count();
+            // HashSet can be used too.
+            // int countOfUniqueCharInInput = (new HashSet<char>(input)).Count;
+            
+            if (input.Length.Equals(countOfUniqueCharInInput))
+            {
+                return true;
+            }
+            return false;
+        }
+   
     }
 }
