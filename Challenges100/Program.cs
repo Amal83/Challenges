@@ -29,6 +29,14 @@ namespace Challenges100
             Console.WriteLine(NameShuffle("Seymour Butts"));
             //what if enter only a name.
             Console.WriteLine(NameShuffle("Joe"));
+            
+            //---------Challenge 103
+            Console.WriteLine("\n**************Challenge 103****************");
+            Console.WriteLine("The function returns true if an input string contains only uppercase or only lowercase letters.\n");
+            Console.WriteLine(SameCase("hello"));
+            Console.WriteLine(SameCase("HELLO"));
+            Console.WriteLine(SameCase("Hello"));
+            Console.WriteLine(SameCase("ketcHUp"));
 
 
         }
@@ -90,6 +98,40 @@ namespace Challenges100
             var shuffledName = splitedName[1] + " " + splitedName[0];
             return shuffledName;
         }
+     
+        /// <summary>
+        /// Challenge 103
+        /// The method is checking that the input word is same case letters or not. 
+        /// Examples challenge-103:
+        /// SameCase("hello") ➞ true
+        /// SameCase("HELLO") ➞ true
+        /// SameCase("Hello") ➞ false
+        /// SameCase("ketcHUp") ➞ false
+        /// </summary>
+        /// <param name="input">A word to check for same case letter</param>
+        /// <returns>True or false</returns>
+        public static bool SameCase(string input)
+        {
+            int upper = 0;
+            int lower = 0;
+            for (var i = 0; i < input.Length; i++)
+            {
+                if (char.IsUpper(input[i]))
+                {
+                    upper++;
+                }
+                if (char.IsLower(input[i]))
+                {
+                    lower++;
+                }
+            }
+            if ((upper == 0 && lower > 0) || (upper > 0 && lower == 0))
+            {
+                return true;
+            }
+            return false;
+        }
+        
         
     }
 }
