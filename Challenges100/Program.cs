@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 namespace Challenges100
 {
@@ -44,6 +46,16 @@ namespace Challenges100
             Console.WriteLine(IsIsogram("Algorism"));
             Console.WriteLine(IsIsogram("PasSword"));
             Console.WriteLine(IsIsogram("Consecutive"));
+            
+            //---------Challenge 105----------------------------------------------
+            Console.WriteLine("\n**************Challenge 105****************");
+            Console.WriteLine("The function takes a number(from 1 to 12) and returns its corresponding month name as a string.For example, if you're given 3 as input, your function should return `March´, because March is the 3rd month.\n");
+
+            Console.WriteLine(MonthName(3));
+            Console.WriteLine(MonthName(12));
+            Console.WriteLine(MonthName(6));
+            //for discussing 
+            Console.WriteLine(MonthNameV2(0)); 
 
 
             
@@ -164,6 +176,55 @@ namespace Challenges100
                 return true;
             }
             return false;
+        }
+        
+        /// <summary>
+        /// Challenge 105
+        /// The method finds month name by month number.
+        /// Examples:
+        /// MonthName(3) ➞ "March"
+        /// MonthName(12) ➞ "December"
+        /// MonthName(6) ➞ "June"
+        /// </summary>
+        /// <param name="input">A interger number</param>
+        /// <returns>Name of munth that corresponding to the inout number.</returns>
+        public static String MonthName(int input)
+        {
+            if (input > 12 || input < 1) return "Please enter a number between 1 and 12.";
+            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(input);
+
+            return monthName;
+        }
+        
+        /// <summary>
+        /// Challenge 105 v2 classic 
+        /// The method finds month name by month number.
+        /// Examples:
+        /// MonthName(3) ➞ "March"
+        /// MonthName(12) ➞ "December"
+        /// MonthName(6) ➞ "June"
+        /// </summary>
+        /// <param name="input">A interger number</param>
+        /// <returns>Name of munth that corresponding to the inout number.</returns>
+        public static String MonthNameV2(int input)
+        {
+            if (input > 12 || input < 1) return "Please enter a number between 1 and 12.";
+            var monthes = new List<string>()
+            { "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            };
+
+            return monthes[input - 1];
         }
    
     }
