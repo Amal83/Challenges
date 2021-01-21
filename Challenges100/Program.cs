@@ -8,7 +8,7 @@ namespace Challenges100
         {
             //---------Challenge 101----------------------------------------------
             Console.WriteLine("\n**************Challenge 101****************");
-            Console.WriteLine("The function that takes an array of numbers \nand return both the minimum and maximum numbers, in that order.\n");
+            Console.WriteLine("The function takes an array of numbers \nand return both the minimum and maximum numbers, in that order.\n");
 
             // A void method that has console.writeLine 
             //FindMinMax(firstArray);
@@ -19,6 +19,16 @@ namespace Challenges100
             Console.WriteLine(String.Join(", ", FindMinMaxV2(new int[] { 1, 2, 3, 4, 5 })));
             Console.WriteLine(String.Join(", ", FindMinMaxV2(new int[] { 2334454, 5 })));
             Console.WriteLine(String.Join(", ", FindMinMaxV2(new int[] { 1, 1 })));
+            
+            
+            //---------Chalenge 102----------------------------------------------
+            Console.WriteLine("\n**************Challenge 102****************");
+            Console.WriteLine("The function accepts a string of a person's first \nand last name and returns a string with the first and last name swapped.\n");
+            Console.WriteLine(NameShuffle("Donald Trump"));
+            Console.WriteLine(NameShuffle("Rosie O'Donnell"));
+            Console.WriteLine(NameShuffle("Seymour Butts"));
+            //what if enter only a name.
+            Console.WriteLine(NameShuffle("Joe"));
 
 
         }
@@ -55,10 +65,31 @@ namespace Challenges100
         public static int[] FindMinMaxV2(int[] array)
         {
             var result = new int[] { };
-
             result = result.Concat(new int[] { array.Min() }).ToArray();
             result = result.Concat(new int[] { array.Max() }).ToArray();
             return result;
         }
+        
+        /// <summary>
+        /// Challenge 102
+        /// Enter full name and first name will be swapped with last name
+        /// Example:
+        /// NameShuffle("Donald Trump") ➞ "Trump Donald"
+        /// NameShuffle("Rosie O'Donnell") ➞ "O'Donnell Rosie"
+        /// NameShuffle("Seymour Butts") ➞ "Butts Seymour
+        /// </summary>
+        /// <param name="fullName">A full name that should be swapped</param>
+        /// <returns>The swapped last name and the swapped first name.</returns>
+        public static String NameShuffle(string fullName)
+        {
+            var splitedName = fullName.Split(' ');
+            if (splitedName.Length.Equals(1))
+            {
+                return "Please enter a full name!";
+            }
+            var shuffledName = splitedName[1] + " " + splitedName[0];
+            return shuffledName;
+        }
+        
     }
 }
